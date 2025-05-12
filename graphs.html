@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs of Functions - Mock Exam</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['\\(', '\\)']], // Define \( ... \) for inline math
+            displayMath: [['\\[', '\\]']], // Define \[ ... \] for display math
+            processEscapes: true,
+            processEnvironments: true,
+            processRefs: true
+          },
+          options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            ignoreHtmlClass: 'tex2jax_ignore',
+            processHtmlClass: 'tex2jax_process'
+          }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* Styles specific to question pages */
+        .question-container {
+            background-color: #fff;
+            padding: 25px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 700px;
+        }
+        .question-text p, .question-text div {
+             margin-bottom: 15px;
+        }
+        .question-text .system-eq {
+            display: block;
+            margin-left: 20px;
+            margin-bottom: 5px;
+            font-family: monospace;
+        }
+
+        .answer-section {
+            margin-top: 15px;
+        }
+        .answer-section p {
+             margin-bottom: 10px;
+        }
+        .answer-section label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+         .answer-section input[type="radio"] {
+             vertical-align: middle;
+             margin-right: 3px;
+         }
+         .answer-section div.radio-option {
+             margin-bottom: 8px;
+         }
+        .answer-section .vertical-label-group label {
+             display: block;
+             margin-left: 0;
+             vertical-align: baseline;
+        }
+        .answer-section .vertical-label-group {
+             margin-bottom: 15px;
+        }
+
+        .answer-section input[type="number"],
+        .answer-section input[type="text"],
+        .answer-section select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+            display: block;
+            width: 150px; /* Default width */
+            margin-top: 3px;
+        }
+        .check-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #28a745; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .check-button:hover {
+            background-color: #218838; /* Darker green */
+        }
+        .feedback {
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 1.2em;
+        }
+        .feedback.correct {
+            color: #28a745; /* Green */
+        }
+        .feedback.incorrect {
+            color: #dc3545; /* Red */
+        }
+        .navigation-links {
+             margin-top: 20px;
+             margin-bottom: 20px;
+             text-align: center;
+        }
+         .navigation-links a {
+             text-decoration: none;
+             color: #0056b3;
+             margin: 0 10px;
+             padding: 8px 12px;
+             border: 1px solid #ccc;
+             border-radius: 5px;
+             background-color: #f4f4f4;
+             transition: background-color 0.3s ease;
+        }
+         .navigation-links a:hover {
+             background-color: #ddd;
+         }
+
+         /* Styles for inline inputs */
+         .inline-answer-group {
+             display: flex;
+             align-items: center;
+             flex-wrap: wrap;
+             margin-top: 10px;
+         }
+         .inline-answer-group span, /* For fixed text like y=, x */
+         .inline-answer-group input,
+         .inline-answer-group select {
+             margin: 0 3px; /* spacing */
+             vertical-align: middle; /* align items vertically */
+         }
+          .inline-answer-group input[type="text"] {
+              width: 80px;
+              text-align: center;
+              display: inline-block; /* Keep inline */
+              margin-top: 0;
+              padding: 6px;
+          }
+          .inline-answer-group select {
+              width: auto; /* Auto width for +/- */
+              padding: 6px;
+              display: inline-block; /* Keep inline */
+              margin-top: 0;
+              vertical-align: middle; /* Ensure alignment */
+          }
+         .inline-answer-group label {
+             display: none;
+         }
+         .input-hint {
+             font-size: 0.9em;
+             color: #666;
+             margin-left: 5px;
+         }
+
+    </style>
+</head>
+<body>
+
+    <div class="navigation-links">
+        <a href="index.html">Back to Main Menu</a>
+    </div>
+
+    <h1>Graphs of Functions</h1>
+
+    <div class="question-container" id="question1">
+        <h2>Question 1</h2>
+        <div class="question-text">
+            <p>Identify the gradient (\(m\)) and the vertical intercept (\(c\)) of the line represented by the equation:</p>
+            \[4x + \frac{y}{2} - 7 = 0\]
+            <p>Hint: Rearrange the equation into the form \(y = mx + c\).</p>
+        </div>
+        <div class="answer-section">
+            <div class="vertical-label-group">
+                <label for="q1_gradient">Gradient (\(m\)):</label>
+                <input type="text" id="q1_gradient" name="q1_gradient" style="width: 100px;">
+            </div>
+            <div class="vertical-label-group">
+                <label for="q1_intercept">Vertical Intercept (\(c\)):</label>
+                <input type="text" id="q1_intercept" name="q1_intercept" style="width: 100px;">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('1', ['q1_gradient', 'q1_intercept'], ['-8', '14'], ['Gradient (m)', 'Vertical Intercept (c)'])">Check Answer Q1</button>
+        <div id="feedback1" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question2">
+        <h2>Question 2</h2>
+        <div class="question-text">
+            <p>Find the equation of the line with vertical intercept (y-intercept) \(-2\) that passes through the point \((11, 64)\).</p>
+        </div>
+        <div class="answer-section">
+            <p>Enter the values for \(m\) and \(c'\) to complete the equation in the form \(y = mx - c'\):</p>
+            <div class="inline-answer-group">
+                <span>\(y = \)</span>
+                <input type="text" id="q2_m" name="q2_m" placeholder="m">
+                <span>\( x - \)</span>
+                <input type="text" id="q2_c_neg" name="q2_c_neg" placeholder="c'">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('2', ['q2_m', 'q2_c_neg'], ['6', '2'], ['m', 'c\''])">Check Answer Q2</button>
+        <div id="feedback2" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question3">
+        <h2>Question 3</h2>
+        <div class="question-text">
+             <p>Does the point \((10, 8)\) lie on the line \(y = 2x - 12\)?</p>
+        </div>
+        <div class="answer-section">
+            <p>Select the correct statement:</p>
+            <div class="radio-option">
+                <input type="radio" id="q3_yes" name="q3_lies_on" value="yes">
+                <label for="q3_yes">The point \((10, 8)\) lies on the line.</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="q3_no" name="q3_lies_on" value="no">
+                <label for="q3_no">The point \((10, 8)\) does not lie on the line.</label>
+            </div>
+        </div>
+        <button class="check-button"
+                onclick="checkAnswer('3', { type: 'radio', groupName: 'q3_lies_on', correctAnswerValue: 'yes' })">
+            Check Answer Q3
+        </button>
+        <div id="feedback3" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question4">
+        <h2>Question 4</h2>
+        <div class="question-text">
+             <p>Identify the gradient (\(m\)) and vertical intercept (\(c\)) of the line \(y = 15 - 10x\).</p>
+             <p>Hint: Compare this to \(y = mx + c\).</p>
+        </div>
+        <div class="answer-section">
+            <div class="vertical-label-group">
+                <label for="q4_gradient">Gradient (\(m\)):</label>
+                <input type="text" id="q4_gradient" name="q4_gradient">
+            </div>
+            <div class="vertical-label-group">
+                <label for="q4_intercept">Vertical Intercept (\(c\)):</label>
+                <input type="text" id="q4_intercept" name="q4_intercept">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('4', ['q4_gradient', 'q4_intercept'], ['-10', '15'], ['Gradient (m)', 'Vertical Intercept (c)'])">Check Answer Q4</button>
+        <div id="feedback4" class="feedback"></div>
+    </div>
+
+     <div class="question-container" id="question5">
+        <h2>Question 5</h2>
+        <div class="question-text">
+            <p>Given the points \((3, -4)\) and \((-2, 5)\), find the equation of the line in slope-intercept form \(y = mx + b\).</p>
+        </div>
+        <div class="answer-section">
+             <p>Enter the values for \(m\) (slope) and \(b\) (y-intercept) below. Use fractions (e.g., -9/5 or 3/4) rather than decimals.</p>
+            <div class="inline-answer-group">
+                <span>\(y = \)</span>
+                <input type="text" id="q5_m" name="q5_m" placeholder="m">
+                <span>\( x + \)</span>
+                <input type="text" id="q5_b" name="q5_b" placeholder="b">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('5', ['q5_m', 'q5_b'], ['-9/5', '7/5'], ['slope (m)', 'y-intercept (b)'])">Check Answer Q5</button>
+        <div id="feedback5" class="feedback"></div>
+    </div>
+
+     <div class="question-container" id="question6">
+        <h2>Question 6</h2>
+         <div class="question-text">
+             <p>Given the points \((0, 1)\) and \((5, 7)\), find the equation of the line in slope-intercept form \(y = mx + b\).</p>
+        </div>
+        <div class="answer-section">
+             <p>Enter the values for \(m\) (slope) and \(b\) (y-intercept) below. Use fractions where necessary (e.g., 6/5 or 2/3).</p>
+            <div class="inline-answer-group">
+                <span>\(y = \)</span>
+                <input type="text" id="q6_m" name="q6_m" placeholder="m">
+                <span>\( x + \)</span>
+                <input type="text" id="q6_b" name="q6_b" placeholder="b">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('6', ['q6_m', 'q6_b'], ['6/5', '1'], ['slope (m)', 'y-intercept (b)'])">Check Answer Q6</button>
+        <div id="feedback6" class="feedback"></div>
+    </div>
+
+     <div class="question-container" id="question7">
+        <h2>Question 7</h2>
+        <div class="question-text">
+            <p>Find the equation of the line that is perpendicular to \(y = -2x + 5\) and passes through the point \((1, -3)\).</p>
+        </div>
+        <div class="answer-section">
+             <p>Complete the equation \(y = mx \pm b\). Use fractions where necessary (e.g., 3/4 or 5/3).</p>
+            <div class="inline-answer-group">
+                <span>\(y = \)</span>
+                <input type="text" id="q7_m" name="q7_m" placeholder="m">
+                <span>\( x \)</span>
+                <select id="q7_sign" name="q7_sign">
+                    <option value="" disabled selected>Sign</option> <option value="+">+</option>
+                    <option value="-">-</option>
+                </select>
+                <input type="text" id="q7_b_abs" name="q7_b_abs" placeholder="|b|">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('7', ['q7_m', 'q7_sign', 'q7_b_abs'], ['1/2', '-', '7/2'], ['slope (m)', 'sign', 'intercept value |b|'])">Check Answer Q7</button>
+        <div id="feedback7" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question8">
+        <h2>Question 8</h2>
+        <div class="question-text">
+             <p>Solve the system:</p>
+             <span class="system-eq">\(2x + 3y = 12\)</span>
+             <span class="system-eq">\(4x - y = 6\)</span>
+        </div>
+        <div class="answer-section">
+            <p>Enter the values for \(x\) and \(y\). Use fractions (e.g., 15/7).</p>
+            <div class="vertical-label-group">
+                <label for="q8_x">Value for \(x\):</label>
+                <input type="text" id="q8_x" name="q8_x">
+            </div>
+            <div class="vertical-label-group">
+                <label for="q8_y">Value for \(y\):</label>
+                <input type="text" id="q8_y" name="q8_y">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('8', ['q8_x', 'q8_y'], ['15/7', '24/7'], ['x', 'y'])">Check Answer Q8</button>
+        <div id="feedback8" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question9">
+        <h2>Question 9</h2>
+        <div class="question-text">
+             <p>Solve the system:</p>
+             <span class="system-eq">\(x + 3y = 7\)</span>
+             <span class="system-eq">\(2x - y = 4\)</span>
+        </div>
+        <div class="answer-section">
+            <p>Enter the values for \(x\) and \(y\). Use fractions (e.g., 19/7).</p>
+            <div class="vertical-label-group">
+                <label for="q9_x">Value for \(x\):</label>
+                <input type="text" id="q9_x" name="q9_x">
+            </div>
+            <div class="vertical-label-group">
+                <label for="q9_y">Value for \(y\):</label>
+                <input type="text" id="q9_y" name="q9_y">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('9', ['q9_x', 'q9_y'], ['19/7', '10/7'], ['x', 'y'])">Check Answer Q9</button>
+        <div id="feedback9" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question10">
+        <h2>Question 10</h2>
+         <div class="question-text">
+             <p>Solve the system:</p>
+             <span class="system-eq">\(5x + 2y = 13\)</span>
+             <span class="system-eq">\(3x - y = 7\)</span>
+        </div>
+        <div class="answer-section">
+            <p>Enter the values for \(x\) and \(y\). Use fractions (e.g., 27/11).</p>
+            <div class="vertical-label-group">
+                <label for="q10_x">Value for \(x\):</label>
+                <input type="text" id="q10_x" name="q10_x">
+            </div>
+            <div class="vertical-label-group">
+                <label for="q10_y">Value for \(y\):</label>
+                <input type="text" id="q10_y" name="q10_y">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('10', ['q10_x', 'q10_y'], ['27/11', '4/11'], ['x', 'y'])">Check Answer Q10</button>
+        <div id="feedback10" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question11">
+        <h2>Question 11</h2>
+         <div class="question-text">
+             <p>Find the equation of the straight line that passes through \((1, -3)\) and \((3, 1)\).</p>
+        </div>
+        <div class="answer-section">
+             <p>Complete the equation \(y = mx \pm b\).</p>
+            <div class="inline-answer-group">
+                <span>\(y = \)</span>
+                 <label for="q11_m" style="display: none;">Slope (m):</label>
+                <input type="text" id="q11_m" name="q11_m" placeholder="m">
+                <span>\( x \)</span>
+                 <label for="q11_sign" style="display: none;">Sign:</label>
+                <select id="q11_sign" name="q11_sign">
+                     <option value="" disabled selected>Sign</option>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                </select>
+                 <label for="q11_b_abs" style="display: none;">Intercept value |b|:</label>
+                <input type="text" id="q11_b_abs" name="q11_b_abs" placeholder="|b|">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('11', ['q11_m', 'q11_sign', 'q11_b_abs'], ['2', '-', '5'], ['slope (m)', 'sign', 'intercept value |b|'])">Check Answer Q11</button>
+        <div id="feedback11" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question12">
+        <h2>Question 12</h2>
+        <div class="question-text">
+             <p>Find the equation of the straight line that passes through \((17, -23)\) and \((17, 8)\).</p>
+        </div>
+        <div class="answer-section">
+            <p>Enter the value to complete the equation \(x = \square\).</p>
+             <div class="inline-answer-group">
+                 <span>\(x = \)</span>
+                 <label for="q12_val" style="display: none;">Value:</label>
+                <input type="text" id="q12_val" name="q12_val" placeholder="value" style="width: 80px;">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('12', ['q12_val'], ['17'], ['value'])">Check Answer Q12</button>
+        <div id="feedback12" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question13">
+        <h2>Question 13</h2>
+        <div class="question-text">
+             <p>Find the equation of the straight line that passes through \((6, -12)\) and \((15, -3)\).</p>
+        </div>
+        <div class="answer-section">
+            <p>Complete the equation \(y = x \pm b\). Note the slope is 1.</p>
+            <div class="inline-answer-group">
+                <span>\(y = x \)</span> <label for="q13_sign" style="display: none;">Sign:</label>
+                <select id="q13_sign" name="q13_sign">
+                     <option value="" disabled selected>Sign</option>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                </select>
+                <label for="q13_b_abs" style="display: none;">Intercept value |b|:</label>
+                <input type="text" id="q13_b_abs" name="q13_b_abs" placeholder="|b|">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('13', ['q13_sign', 'q13_b_abs'], ['-', '18'], ['sign', 'intercept value |b|'])">Check Answer Q13</button>
+        <div id="feedback13" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question14">
+        <h2>Question 14</h2>
+        <div class="question-text">
+             <p>Find the slope of the line through the pair of points \((-4, 7)\) and \((-6, -4)\).</p>
+        </div>
+        <div class="answer-section">
+            <p>Enter the value for the slope \(m\). Use fractions if necessary.</p>
+            <div class="vertical-label-group">
+                <label for="q14_m">Slope (\(m\)):</label>
+                <input type="text" id="q14_m" name="q14_m">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('14', ['q14_m'], ['11/2'], ['Slope (m)'])">Check Answer Q14</button>
+        <div id="feedback14" class="feedback"></div>
+    </div>
+
+    <div class="question-container" id="question15">
+        <h2>Question 15</h2>
+         <div class="question-text">
+             <p>Find the slope of the line through the pair of points \((9, 3)\) and \((19, -17)\).</p>
+        </div>
+        <div class="answer-section">
+            <p>Enter the value for the slope \(m\).</p>
+            <div class="vertical-label-group">
+                <label for="q15_m">Slope (\(m\)):</label>
+                <input type="text" id="q15_m" name="q15_m">
+            </div>
+        </div>
+        <button class="check-button" onclick="checkAnswer('15', ['q15_m'], ['-2'], ['Slope (m)'])">Check Answer Q15</button>
+        <div id="feedback15" class="feedback"></div>
+    </div>
+    <script>
+        // Generic function to check answers - Handles text arrays and radio objects
+        function checkAnswer(questionNumber, detailsOrInputIds, correctAnswersOrNull, answerLabelsOrNull) {
+            const feedbackElement = document.getElementById(`feedback${questionNumber}`);
+            if (!feedbackElement) {
+                console.error(`Feedback element for question ${questionNumber} not found.`);
+                return;
+            }
+
+            let isCorrect = false;
+            let feedbackMessage = '';
+
+            // Check if we are handling the new format (object) or old format (arrays)
+            if (typeof detailsOrInputIds === 'object' && !Array.isArray(detailsOrInputIds) && detailsOrInputIds !== null) {
+                // --- Handling New Object Format (e.g., for Radio Buttons) ---
+                const details = detailsOrInputIds;
+
+                if (details.type === 'radio') {
+                    const groupName = details.groupName;
+                    const correctAnswerValue = details.correctAnswerValue;
+                    const questionContainer = document.getElementById(`question${questionNumber}`);
+                    const selectedOption = questionContainer ? questionContainer.querySelector(`input[name="${groupName}"]:checked`) : null;
+
+                    if (selectedOption) {
+                        if (selectedOption.value === correctAnswerValue) {
+                            isCorrect = true;
+                            feedbackMessage = "Correct!";
+                        } else {
+                            isCorrect = false;
+                            feedbackMessage = "Incorrect. Please review your selection.";
+                        }
+                    } else {
+                         isCorrect = false;
+                         feedbackMessage = 'Please select an option.';
+                    }
+
+                } else {
+                    console.error("Unknown details type:", details.type);
+                    feedbackMessage = "Error checking answer: Unknown details type.";
+                    isCorrect = false;
+                }
+
+            } else if (Array.isArray(detailsOrInputIds)) {
+                // --- Handling Old Array Format (for Text Inputs / Select) ---
+                const inputIds = detailsOrInputIds;
+                const correctAnswers = correctAnswersOrNull;
+                const answerLabels = answerLabelsOrNull;
+
+                if (!correctAnswers || !answerLabels || inputIds.length !== correctAnswers.length || inputIds.length !== answerLabels.length) {
+                     console.error(`Mismatch in array lengths or missing arrays for question ${questionNumber}`);
+                     feedbackMessage = "Error checking answer: Configuration error.";
+                     isCorrect = false;
+                 } else {
+                     let allCorrect = true;
+                     let errorMessages = [];
+
+                     for (let i = 0; i < inputIds.length; i++) {
+                         const inputElement = document.getElementById(inputIds[i]);
+                         if (!inputElement) {
+                             console.error(`Element with ID ${inputIds[i]} not found.`);
+                             errorMessages.push(`Configuration error for input ${i + 1}.`);
+                             allCorrect = false;
+                             continue;
+                         }
+                         // For select elements with a disabled placeholder, check if it's selected
+                         if (inputElement.tagName === 'SELECT' && inputElement.value === "") {
+                             allCorrect = false;
+                             const label = answerLabels[i] ? answerLabels[i] : `input ${i + 1}`;
+                              errorMessages.push(`Please select a value for ${label}.`);
+                              continue; // Skip comparison if placeholder is selected
+                         }
+
+                         const userAnswer = inputElement.value.trim();
+
+                         if (userAnswer !== correctAnswers[i]) {
+                             allCorrect = false;
+                             const label = answerLabels[i] ? answerLabels[i] : `input ${i + 1}`;
+                             // Avoid showing expected answer for select elements (like sign)
+                             if (inputElement.tagName === 'SELECT') {
+                                 errorMessages.push(`Check your selection for ${label}.`);
+                             } else {
+                                 errorMessages.push(`Check your value for ${label} (Expected: ${correctAnswers[i]})`);
+                             }
+                         }
+                     }
+
+                     isCorrect = allCorrect;
+
+                     if (isCorrect) {
+                         feedbackMessage = "Correct!"; // Generic success message
+                     } else {
+                         // Add specific message if only placeholder issue detected
+                         if (errorMessages.length > 0 && errorMessages[0].includes("Please select a value")) {
+                              feedbackMessage = errorMessages[0];
+                         } else {
+                              feedbackMessage = "Incorrect. " + errorMessages.join(' ');
+                         }
+                     }
+                 }
+            } else {
+                 console.error("Invalid arguments passed to checkAnswer for question " + questionNumber);
+                 feedbackMessage = "Error checking answer: Invalid configuration.";
+                 isCorrect = false;
+            }
+
+
+            // --- Update Feedback Element ---
+            feedbackElement.textContent = feedbackMessage;
+            if (isCorrect) {
+                feedbackElement.className = 'feedback correct';
+            } else {
+                feedbackElement.className = 'feedback incorrect';
+            }
+        }
+    </script>
+
+</body>
+</html>

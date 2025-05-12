@@ -1,0 +1,78 @@
+/* style.css */
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f8f9fa; /* Light background */
+    color: #333; /* Dark text */
+}
+
+h1 {
+    text-align: center;
+    color: #0056b3; /* A shade of blue */
+    margin-bottom: 30px;
+}
+
+.instructions {
+    margin-top: 30px;
+    margin-bottom: 40px; /* Added more space below instructions */
+    text-align: center;
+    font-style: italic;
+    color: #555; /* Slightly lighter text for instructions */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Reset default margin */
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block; /* Display items side-by-side by default */
+    margin: 10px 8px; /* Add vertical and horizontal margin */
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1.1em; /* Slightly adjusted font size */
+    padding: 12px 18px; /* Slightly larger padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff; /* White background for links */
+    color: #0056b3; /* Link color matches heading */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block; /* Make the anchor fill the list item for better click area */
+}
+
+nav ul li a:hover {
+    background-color: #0056b3; /* Blue background on hover */
+    color: #ffffff; /* White text on hover */
+    border-color: #004085; /* Darker border on hover */
+}
+
+/* --- Responsive Design for smaller screens --- */
+/* When the screen width is 600px or less */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block; /* Stack items vertically */
+        margin: 10px auto; /* Center the block elements */
+        width: 80%; /* Set a width for the list items */
+        max-width: 300px; /* Optional: set a max width */
+    }
+
+    nav ul li a {
+        /* Styles for anchor tag remain largely the same */
+        /* Padding might be adjusted if needed */
+        padding: 10px 15px;
+    }
+
+     h1 {
+        font-size: 1.8em; /* Slightly smaller heading on small screens */
+    }
+
+    .instructions {
+         margin-bottom: 30px;
+    }
+}
